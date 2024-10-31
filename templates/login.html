@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+</head>
+
+<body>
+    <div>
+        <nav id="navbar2">
+            <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/image.jpeg')}}" width="120" height="120" border="2"></a>            
+            <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+            <a class="left_icon" href="{{ url_for('owemoney')}}">Owe Money</a>
+            <a class="left_icon" href="{{ url_for('returnmoney')}}">Pay Off</a>
+            <a class="small_img" href="{{ url_for('info')}}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="left-section">
+            <img src="{{url_for('static', filename='image/logo.gif')}}" alt="Banner" width="450" height="450">
+        </div>
+        <div class="right-section"> 
+            <div class="login-container">
+                <h1>登入</h1>
+                <p>若尚未註冊，請點擊下方註冊</p>
+                <form action="{{url_for('login_submit')}}" method="POST">
+                    <input name="username"  type="text" placeholder="USERNAME" required>
+                    <input name="password" type="password" placeholder="PASSWORD" required>
+                    <div class="login-button">
+                        <button type="submit">登入</button>
+                    </div>
+                </form>
+
+                <form action="{{url_for('register')}}" method="POST">
+                    <div class="register-button">
+                        <button  type="submit">註冊</button>
+                    </div>
+                    
+                </form>
+                    
+
+                
+            </div>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+            {% for category, message in messages %}
+                <script>
+                    alert("{{ message }}");
+                </script>
+            {% endfor %}
+        
+    {% endif %}
+{% endwith %}   
+
+</body>
+</html>

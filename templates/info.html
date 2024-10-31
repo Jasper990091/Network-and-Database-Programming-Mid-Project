@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帳號資訊</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='info.css')}}">
+</head>
+<body>
+    <div>
+        <nav id="navbar2">
+            <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/image.jpeg')}}" width="120" height="120" border="2"></a>            
+            <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+            <a class="left_icon" href="{{ url_for('owemoney')}}">Owe Money</a>
+            <a class="left_icon" href="{{ url_for('returnmoney')}}">Pay Off</a>
+            <a class="small_img" href="{{ url_for('info')}}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+        </nav>
+    </div>
+    <main>
+        <section class="account-info">
+            <h1>歡迎</h1>
+            <h1>{{session["username"]}}!</h1>
+            <div class="account-details">
+                <form action="{{url_for('logout')}}" method="POST">
+                    <p><strong>Email:</strong> {{ email }}</p>
+                    <button class="logout-account" type="submit">登出</button>
+                </form>
+            </div>
+        </section>
+        <section class="order-history">
+            <h2>欠錢狀態</h2>
+            {% if querys1 %}
+                {% for query in querys1 %}
+                    <p>{{ query }}</p>
+                {% endfor %}
+            {% else %}
+                <p>(無)</p>
+            {% endif %}
+        </section>
+        <section class="order-history">
+            <h2>被欠錢狀態</h2>
+            {% if querys2 %}
+                {% for query in querys2 %}
+                    <p>{{ query[0] }}</p>
+                    <center><a href="{{ url_for('sendmail', person = query[1], amount = query[2]) }}"><button>寄出催繳信件</button></a></center>
+                {% endfor %}
+            {% else %}
+                <p>(無)</p>
+            {% endif %}
+        </section>
+        <section class="order-history">
+        <h2>修改紀錄</h2>
+        <table>
+            <tr>
+                <th>紀錄</th>
+                <th>備註</th>
+            </tr>
+                {% for history in historys %}
+                <tr>
+                    <td>{{ history[0] }}</td>
+                    <td>{{ history[1] }}</td>
+                </tr>
+                {% endfor %}
+        </table>
+        </section>
+    </main>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                    <script>
+                        alert("{{ message }}");
+                    </script>
+                {% endfor %}
+            
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

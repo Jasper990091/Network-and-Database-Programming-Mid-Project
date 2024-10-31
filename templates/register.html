@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='register.css')}}">
+    
+</head>
+<body>
+    <div>
+        <nav id="navbar2">
+            <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/image.jpeg')}}" width="120" height="120" border="2"></a>            
+            <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+            <a class="left_icon" href="{{ url_for('owemoney')}}">Owe Money</a>
+            <a class="left_icon" href="{{ url_for('returnmoney')}}">Pay Off</a>
+            <a class="small_img" href="{{ url_for('info')}}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="left-section">
+            <img src="{{url_for('static', filename='image/logo.gif')}}" alt="Banner" width="450" height="450">
+        </div>
+        <div class="right-section"> 
+            <div class="register-container">
+                <h1>註冊</h1>
+                <form action="{{url_for('register_submit')}}" method="POST">
+                    <div class="form-group">
+                        <p>使用者名稱</p>
+                        <input name="username" type="text" placeholder="Username" id="username" required value="" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <p>電子郵件</p>
+                        <input name="email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <p>密碼</p>
+                        <input name="password" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">REGISTER</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                    <script>
+                        alert("{{ message }}");
+                    </script>
+                {% endfor %}
+            
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

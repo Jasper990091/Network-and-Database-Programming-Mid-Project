@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欠錢還錢系統</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+</head>
+<body>
+    <div>
+        <nav id="navbar2">
+            <a href="{{ url_for('home') }}"><img class="logo" src="{{url_for('static', filename='image/image.jpeg')}}" width="120" height="120" border="2"></a>            
+            <a class="left_icon" href="{{ url_for('home')}}">Home</a>
+            <a class="left_icon" href="{{ url_for('owemoney')}}">Owe Money</a>
+            <a class="left_icon" href="{{ url_for('returnmoney')}}">Pay Off</a>
+            <a class="small_img" href="{{ url_for('info')}}"><img src="{{url_for('static', filename='image/user.png')}}" width="40" height="40"></a>
+        </nav>
+    </div>
+    <div id="main_bady">
+        <h1>歡迎來到</h1><br>
+        <h2>欠錢還錢系統</h2>
+        <a href="{{ url_for('owemoney') }}"><button>開始使用!</button></a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                    <script>
+                        alert("{{ message }}");
+                    </script>
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
+        
+</body>
+</html>

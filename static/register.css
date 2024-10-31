@@ -1,0 +1,146 @@
+#navbar2{
+    overflow: hidden;
+    background-color: white;
+    margin: 0;
+    border-style:groove;
+    border-width: 5px;
+    border-color: gold;
+    padding: 10px;
+    align-items: center;
+    height: 110px;
+    z-index: 10;
+    .logo{
+        position: relative;
+        float: left;
+        top:-5px;
+        margin: 0px 50px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .left_icon{
+        float: left;
+        font-size: 33px;
+        font-family: Stencil Std, fantasy;
+        /*font-weight:bold;*/
+        color: black;
+        text-decoration: none;
+        flex-grow: 1;
+        align-content: center;
+        padding: 0 25px;
+        transition: 0.3s;
+        height:110px;
+        &:hover {
+            background-color: rgb(103, 202, 169);
+        }
+    }
+    .small_img{
+        position: relative;
+        float: right;
+        top:-15px;
+        align-content: center;
+        padding: 10px 10px;
+        margin: 40px 25px;
+        &:hover {
+            background-color: rgb(103, 202, 169);
+            cursor: pointer;
+        }
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #343a40;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+.left-section img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.right-section {
+    margin-right: 50px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    height: 650px;
+}
+
+.register-container {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.register-container h1 {
+    margin-top: 0;
+    padding: 0 200px 0 200px;
+}
+
+.register-container p {
+    margin-bottom: 5px;
+
+}
+
+.register-container input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.register-container small {
+    color: gray;
+    display: block;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.register-container .form-group {
+    text-align: left;
+}
+.button-container {
+    display: flex;
+    justify-content: center;  
+    margin-top: 20px;         
+}
+
+.register-container button {
+    width: 80%;               
+    max-width: 400px;        
+    padding: 10px;        
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.register-container button[type="submit"] {
+    background-color: rgba(4, 215, 11, 0.861);
+}
+
+.register-container button:hover {
+    opacity: 0.7;
+}
